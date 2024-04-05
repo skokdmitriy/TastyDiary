@@ -3,17 +3,32 @@ import SwiftUI
 @main
 struct EntryApp: App {
     @UIApplicationDelegateAdaptor private var appDelegate: AppDelegate
+    @ObservedObject private var themeManager = ThemeManager.shared
 
     var body: some Scene {
         WindowGroup {
-            ContentApp()
+            ContentApp().environmentObject(themeManager)
         }
     }
 }
 
 struct ContentApp: View {
 
+    @EnvironmentObject private var themeManager: ThemeManager
+
     var body: some View {
+        let _ = Self._printChanges()
+
+        Text("Hello theme")
+        .foregroundColor(.label.primary)
+        .padding()
+        .background(Color.background.primary)
+
+        Button("Just change current theme") {
+            themeManager.currentThemeType = .dark
+        }
+
+
         TabView {
             Text("1")
             .badge(2)
@@ -28,5 +43,6 @@ struct ContentApp: View {
             Text("4")
             .tabItem { Label("tab.item.profile", systemImage: "person.fill") }
         }
+        .accentColor(.label.secondary)
     }
 }
