@@ -14,6 +14,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         TastyDiaryKit.hello()
         TastyDiaryUI.hello()
 
+        ThemeManager.shared.themes = [
+            .light: ThemeStorage.light,
+            .dark: ThemeStorage.dark
+        ]
+
         return true
     }
 }
