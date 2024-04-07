@@ -7,7 +7,8 @@ struct EntryApp: App {
 
     var body: some Scene {
         WindowGroup {
-            ContentApp().environmentObject(themeManager)
+//            ContentApp().environmentObject(themeManager)
+            SearchResultsUI()
         }
     }
 }
