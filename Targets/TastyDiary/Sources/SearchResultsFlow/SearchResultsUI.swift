@@ -73,20 +73,19 @@ private extension SearchResultsUI {
         ZStack(alignment: .top) {
             headerImage
 
-            HStack() {
+            HStack {
                 backButton
                 Spacer()
                 helpTooltip
             }
         }
-        .background(Color.green)
     }
 
     var headerImage: some View {
         Image("Search-Result-Background")
         .resizable()
-        .scaledToFit()
-        .frame(maxWidth: .infinity)
+//        .scaledToFill()
+//        .frame(maxWidth: .infinity)
         .ignoresSafeArea()
     }
 }
@@ -135,7 +134,7 @@ private extension SearchResultsUI {
     var helpTooltipImage: some View {
         Image(systemName: "chevron.right")
         .resizable()
-        .scaledToFit()
+        .scaledToFill()
         .frame(width: 10, height: 8)
         .foregroundColor(.black)
     }
