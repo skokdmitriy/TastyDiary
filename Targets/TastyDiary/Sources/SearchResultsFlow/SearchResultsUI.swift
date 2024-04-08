@@ -1,13 +1,68 @@
 import SwiftUI
 
 struct SearchResultsUI: View {
+
+    private let historyData: [String] = [
+        "My search history",
+        "My favourite recipes",
+        "My favourite recipes",
+        "My favourite recipes",
+        "My favourite recipes",
+        "Easy Mexican Casserole",
+        "My favourite recipes",
+        "My favourite recipes",
+        "My favourite recipes",
+    ]
+
     var body: some View {
         NavigationView {
-            VStack(spacing: 0) {
+            VStack {
                 header
-                Spacer()
+                search
             }
         }
+    }
+
+    var search: some View {
+        ScrollView(showsIndicators: false) {
+            VStack {
+                ForEach(historyData.indices, id: \.self) { index in
+                    cell(
+                        title: historyData[index],
+                        isDiverExist: historyData.count - 1 != index
+                    )
+                }
+            }
+        }
+        .padding(.top, 6)
+        .background(Color.white)
+        .cornerRadius(24, corners: [.topLeft, .topRight])
+        .offset(x: 0, y: -36)
+    }
+
+    func cell(title: String, isDiverExist: Bool) -> some View {
+        VStack {
+            HStack {
+                Text(title)
+                .font(.callout)
+
+                Spacer()
+
+                Image(systemName: "arrow.right")
+                .resizable()
+                .scaledToFit()
+                .frame(width: 15, height: 11)
+
+            }
+            .padding(.vertical, 17)
+
+            Divider()
+            .frame(height: 0.5)
+            .opacity(isDiverExist ? 1 : 0)
+
+        }
+        .padding(.horizontal, 35)
+        .foregroundColor(.gray)
     }
 }
 
@@ -18,20 +73,21 @@ private extension SearchResultsUI {
         ZStack(alignment: .top) {
             headerImage
 
-            HStack(spacing: 0) {
+            HStack() {
                 backButton
                 Spacer()
                 helpTooltip
             }
         }
+        .background(Color.green)
     }
 
     var headerImage: some View {
         Image("Search-Result-Background")
-            .resizable()
-            .scaledToFit()
-            .frame(maxWidth: .infinity)
-            .ignoresSafeArea()
+        .resizable()
+        .scaledToFit()
+        .frame(maxWidth: .infinity)
+        .ignoresSafeArea()
     }
 }
 
@@ -50,10 +106,10 @@ private extension SearchResultsUI {
 
     var backButtonImage: some View {
         Image(systemName: "arrow.backward")
-            .resizable()
-            .foregroundColor(.white)
-            .scaledToFit()
-            .frame(width: 17, height: 14)
+        .resizable()
+        .scaledToFit()
+        .frame(width: 20, height: 14)
+        .foregroundColor(.white)
     }
 
     var helpTooltip: some View {
