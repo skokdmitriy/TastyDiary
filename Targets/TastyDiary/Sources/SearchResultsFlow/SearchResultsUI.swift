@@ -84,8 +84,6 @@ private extension SearchResultsUI {
     var headerImage: some View {
         Image("Search-Result-Background")
         .resizable()
-//        .scaledToFill()
-//        .frame(maxWidth: .infinity)
         .ignoresSafeArea()
     }
 }
