@@ -10,9 +10,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         _ application: UIApplication,
         didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil
     ) -> Bool {
-
         TastyDiaryKit.hello()
         TastyDiaryUI.hello()
+
+		CustomFontManager.registrationCustomFonts()
 
         ThemeManager.shared.themes = [
             .light: ThemeStorage.light,

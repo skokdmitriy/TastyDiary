@@ -20,6 +20,7 @@ struct SearchResultsUI: View {
                 header
                 search
             }
+			.background(Color.white)
         }
     }
 
@@ -44,7 +45,7 @@ struct SearchResultsUI: View {
         VStack {
             HStack {
                 Text(title)
-                .font(.callout)
+					.font(.heading4)
 
                 Spacer()
 
@@ -59,10 +60,9 @@ struct SearchResultsUI: View {
             Divider()
             .frame(height: 0.5)
             .opacity(isDiverExist ? 1 : 0)
-
         }
         .padding(.horizontal, 35)
-        .foregroundColor(.gray)
+		.foregroundColor(.label.secondary)
     }
 }
 
@@ -78,6 +78,7 @@ private extension SearchResultsUI {
                 Spacer()
                 helpTooltip
             }
+			.padding(.horizontal, 16)
         }
     }
 
@@ -98,7 +99,6 @@ private extension SearchResultsUI {
         )
         .frame(width: 40, height: 40)
         .background(Color.background.ghost, in: Circle())
-        .padding(.leading, 20)
     }
 
     var backButtonImage: some View {
@@ -106,7 +106,7 @@ private extension SearchResultsUI {
         .resizable()
         .scaledToFit()
         .frame(width: 20, height: 14)
-        .foregroundColor(.white)
+		.foregroundColor(.label.primary)
     }
 
     var helpTooltip: some View {
@@ -114,19 +114,18 @@ private extension SearchResultsUI {
             helpTooltipTitle
             helpTooltipImage
         }
-        .padding(8)
-        .background(Color.white.opacity(0.7),
-                    in: RoundedRectangle(cornerRadius: 12)
+		.padding(8)
+        .background(
+			Color.background.primary.opacity(0.7),
+			in: RoundedRectangle(cornerRadius: 12)
         )
-        .padding(.leading, 10)
-        .padding(.trailing, 20)
     }
 
     var helpTooltipTitle: some View {
         Text("Swipe to search by ingredients")
         .font(.callout)
         .fontWeight(.bold)
-        .foregroundColor(.black)
+		.foregroundColor(.label.primary)
     }
 
     var helpTooltipImage: some View {
@@ -134,7 +133,7 @@ private extension SearchResultsUI {
         .resizable()
         .scaledToFill()
         .frame(width: 10, height: 8)
-        .foregroundColor(.black)
+		.foregroundColor(.label.primary)
     }
 }
 

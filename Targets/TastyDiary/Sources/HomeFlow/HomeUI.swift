@@ -4,7 +4,9 @@ struct HomeUI: View {
     var body: some View {
         NavigationView {
             ZStack {
+				Color.green.opacity(0.2).ignoresSafeArea()
                 Text("Hello")
+					.font(.numbersM)
             }
             .toolbar {
                 ToolbarItem(placement: .principal) {
@@ -18,7 +20,6 @@ struct HomeUI: View {
                 ToolbarItem(placement: .topBarTrailing) {
                     Circle()
                     .frame(width: 42, height: 42)
-                    .foregroundStyle(.secondary)
                 }
             }
         }
@@ -43,7 +44,12 @@ private extension HomeUI {
 private extension HomeUI {
     var toolbarTitle: some View {
         Text("Mohammed, Dhaka")
+
         .font(.caption)
         .foregroundStyle(.primary)
     }
+}
+
+#Preview {
+	HomeUI()
 }

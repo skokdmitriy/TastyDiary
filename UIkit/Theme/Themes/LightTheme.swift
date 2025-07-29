@@ -2,6 +2,7 @@ import SwiftUI
 
 struct LightTheme: Theme {
     let colors: Colors = LightColors()
+	var fonts: Fonts = FontsImp()
 }
 
 struct LightColors: Colors {
@@ -10,13 +11,14 @@ struct LightColors: Colors {
 }
 
 struct LightBackgroundColors: BackgroundColors {
-    let primary: Color = .red
-    let secondary: Color = .red.opacity(0.5)
-    let ghost: Color = .gray.opacity(0.7)
+	let primary: Color = .primary
+	let secondary: Color = .secondary
+	let ghost: Color = .gray
+	let tertiary: Color = .gray.opacity(0.2)
 }
 
 struct LightLabelColors: LabelColors {
-    let primary: Color = .green
-    let secondary: Color = .green.opacity(0.5)
-    let tertiary: Color = .gray.opacity(0.8)
+	let primary: Color = .white
+	let secondary: Color = .gray
+	let tertiary: Color = .gray.opacity(0.8)
 }
